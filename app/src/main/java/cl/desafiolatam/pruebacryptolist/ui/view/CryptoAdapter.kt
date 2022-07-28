@@ -1,5 +1,6 @@
 package cl.desafiolatam.pruebacryptolist.ui.view
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.pruebacryptolist.databinding.CryptoItemBinding
@@ -13,7 +14,7 @@ class CryptoAdapter(): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
     class CryptoHolder(private val binding: CryptoItemBinding)
         :RecyclerView.ViewHolder(binding.root) {
             fun bind(crypto: Crypto){
-                val cInfo = crypto.cryptodata
+                val cInfo = crypto.data
                 for(value in cInfo){
                     binding.tvPriceUsd.text = value.priceUsd
                     binding.tvCryptoSymbol.text = value.symbol
@@ -23,15 +24,16 @@ class CryptoAdapter(): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
                 }
 
             }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CryptoHolder {
-        TODO("Not yet implemented")
+        val binding = CryptoItemBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
+        return CryptoHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CryptoHolder, position: Int) {
-        holder.bind()
+        holder.bind(cryptoList[position])
     }
 
     override fun getItemCount()= cryptoList.size

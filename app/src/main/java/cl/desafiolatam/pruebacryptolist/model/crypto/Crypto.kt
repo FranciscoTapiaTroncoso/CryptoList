@@ -6,14 +6,14 @@ import com.google.gson.annotations.SerializedName
 data class Crypto(
 
     @field:SerializedName("data")
-    val cryptodata: List<CryptoItem>,
+    val data: List<DataItem>,
 
     @field:SerializedName("timestamp")
     val timestamp: Long
 
 )
 
-data class CryptoItem(
+data class DataItem(
 
     @field:SerializedName("symbol")
     val symbol: String,
