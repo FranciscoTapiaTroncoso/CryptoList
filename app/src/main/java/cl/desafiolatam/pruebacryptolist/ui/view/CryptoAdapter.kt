@@ -5,24 +5,25 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.pruebacryptolist.databinding.CryptoItemBinding
 import cl.desafiolatam.pruebacryptolist.model.crypto.Crypto
+import cl.desafiolatam.pruebacryptolist.model.crypto.DataItem
 import com.squareup.picasso.Picasso
 
 class CryptoAdapter(): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
 
-    private val cryptoList = mutableListOf<Crypto>()
+    private var cryptoList = mutableListOf<Crypto>()
+
 
     class CryptoHolder(private val binding: CryptoItemBinding)
         :RecyclerView.ViewHolder(binding.root) {
             fun bind(crypto: Crypto){
                 val cInfo = crypto.data
                 for(value in cInfo){
-                    binding.tvPriceUsd.text = value.priceUsd
+                    binding.tvPriceUsd.text = "USD$ " + value.priceUsd
                     binding.tvCryptoSymbol.text = value.symbol
                     Picasso.get()
                         .load("https://static.coincap.io/assets/icons/${value.symbol.lowercase()}@2x.png")
                         .into(binding.ivCryptoLogo)
                 }
-
             }
     }
 
@@ -36,7 +37,15 @@ class CryptoAdapter(): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
         holder.bind(cryptoList[position])
     }
 
-    override fun getItemCount()= cryptoList.size
+    override fun getItemCount():Int{
+        return cryptoList.size
+    }
+
+    fun update(list: List<Crypto>){
+        cryptoList.clear()
+        cryptoList.addAll(list)
+        notifyDataSetChanged()
+    }
 
 
 }

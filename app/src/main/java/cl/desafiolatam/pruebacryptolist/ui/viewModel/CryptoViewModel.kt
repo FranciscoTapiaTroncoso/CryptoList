@@ -6,13 +6,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cl.desafiolatam.pruebacryptolist.model.Repository
 import cl.desafiolatam.pruebacryptolist.model.crypto.Crypto
+import cl.desafiolatam.pruebacryptolist.model.crypto.DataItem
 import kotlinx.coroutines.launch
 
 class CryptoViewModel: ViewModel() {
     private val repository = Repository()
 
     private val cryptoList = MutableLiveData<List<Crypto>>()
-
     fun cryptoList(): LiveData<List<Crypto>> = cryptoList
 
     init{
