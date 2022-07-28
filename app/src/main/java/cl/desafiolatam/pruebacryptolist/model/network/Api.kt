@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 interface Api {
     @GET("/v2/assets")
-    suspend fun getAllCryptos(): Response<List<Crypto>>
+    suspend fun getAllCryptos(): Response<Crypto>
 }
 
 class RetrofitClient{
