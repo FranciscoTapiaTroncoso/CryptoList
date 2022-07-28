@@ -13,7 +13,7 @@ class Repository {
         when(response.isSuccessful){
             true -> {
                 if(response.body() != null){
-                    cryptoList.addAll(response.body()!!)
+                    cryptoList.add(response.body()!!)
                 }else{
                     Log.d(TAG, "getCryptos: body is null ")
                 }

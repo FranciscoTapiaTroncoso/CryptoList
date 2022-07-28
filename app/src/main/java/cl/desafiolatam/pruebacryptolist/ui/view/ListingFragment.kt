@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import cl.desafiolatam.pruebacryptolist.R
 import cl.desafiolatam.pruebacryptolist.databinding.FragmentListingBinding
-import cl.desafiolatam.pruebacryptolist.ui.viewModel.CryptoAdapter
 import cl.desafiolatam.pruebacryptolist.ui.viewModel.CryptoViewModel
 
 class ListingFragment : Fragment() {
@@ -18,7 +16,6 @@ class ListingFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewModel by viewModels<CryptoViewModel>()
     private val TAG = "ListingFragment"
-    private lateinit var adapter: CryptoAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,22 +24,13 @@ class ListingFragment : Fragment() {
     ): View? {
         _binding = FragmentListingBinding.inflate(inflater,container,false)
         registerObserver()
-        initView()
         return binding.root
     }
 
-    private fun initView(){
-        adapter = CryptoAdapter()
-        binding.rvCryptoList.adapter = adapter
-        binding.rvCryptoList.layoutManager = GridLayoutManager(context, 1)
-    }
 
     private fun registerObserver() {
         viewModel.cryptoList().observe(viewLifecycleOwner){
             Log.d(TAG, "registerObserver: ${it[0]}")
-            it?.let {
-                adapter.update(it)
-            }
         }
     }
 
