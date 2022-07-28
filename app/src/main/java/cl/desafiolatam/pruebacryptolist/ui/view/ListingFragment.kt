@@ -38,10 +38,10 @@ class ListingFragment : Fragment() {
 
     private fun registerObserver() {
         viewModel.cryptoList().observe(viewLifecycleOwner){
-            Log.d(TAG, "registerObserver: ${it[0]}")
+            Log.d(TAG, "registerObserver: ${it}")
             //Actualizar lista con objeto no nulo
             it?.let{
-                cryptoadapter.update(it)
+                cryptoadapter.update(it.data)
             }
         }
     }

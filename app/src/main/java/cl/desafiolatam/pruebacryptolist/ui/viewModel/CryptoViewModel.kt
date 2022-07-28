@@ -12,14 +12,14 @@ import kotlinx.coroutines.launch
 class CryptoViewModel: ViewModel() {
     private val repository = Repository()
 
-    private val cryptoList = MutableLiveData<List<Crypto>>()
-    fun cryptoList(): LiveData<List<Crypto>> = cryptoList
+    private val dataItemList = MutableLiveData<Crypto>()
+    fun cryptoList(): LiveData<Crypto> = dataItemList
 
     init{
         getCryptos()
     }
 
     fun getCryptos() = viewModelScope.launch{
-        cryptoList.value = repository.getCryptos()
+        dataItemList.value = repository.getCryptos()
     }
 }
