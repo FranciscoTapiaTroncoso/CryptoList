@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import cl.desafiolatam.pruebacryptolist.databinding.FragmentCryptoBinding
@@ -30,7 +31,11 @@ class CryptoFragment : Fragment() {
     }
 
     private fun initView() {
-        cryptoadapter = CryptoAdapter()
+        cryptoadapter = CryptoAdapter{
+            cryptoId ->  Toast.makeText(context,
+            "Clicked crypto $cryptoId",
+            Toast.LENGTH_SHORT).show()
+        }
         binding.rvCryptoList.adapter = cryptoadapter
         binding.rvCryptoList.layoutManager = GridLayoutManager(context, 1)
     }

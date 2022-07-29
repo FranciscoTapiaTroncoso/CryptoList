@@ -2,23 +2,27 @@ package cl.desafiolatam.pruebacryptolist.ui.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.pruebacryptolist.databinding.CryptoItemBinding
 import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 import com.squareup.picasso.Picasso
 
-class CryptoAdapter(): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
+class CryptoAdapter(val clickListener: (cryptoId:String)->Unit): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
 
     private var cryptoList = mutableListOf<DataItem>()
 
     class CryptoHolder(private val binding: CryptoItemBinding)
         :RecyclerView.ViewHolder(binding.root) {
-            fun bind(crypto: DataItem){
-                    binding.tvPriceUsd.text = "USD$ " + crypto.priceUsd
-                    binding.tvCryptoSymbol.text = crypto.symbol
-                    Picasso.get()
-                        .load("https://static.coincap.io/assets/icons/${crypto.symbol.lowercase()}@2x.png")
-                        .into(binding.ivCryptoLogo)
+            fun bind(crypto: DataItem, clickListener: (cryptoId:String)->Unit){
+                binding.tvPriceUsd.text = "USD$ " + crypto.priceUsd
+                binding.tvCryptoSymbol.text = crypto.symbol
+                Picasso.get()
+                    .load("https://static.coincap.io/assets/icons/${crypto.symbol.lowercase()}@2x.png")
+                    .into(binding.ivCryptoLogo)
+                binding.root.setOnClickListener {
+                    clickListener(crypto.symbol)
+                }
             }
     }
 
@@ -29,7 +33,7 @@ class CryptoAdapter(): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
     }
 
     override fun onBindViewHolder(holder: CryptoHolder, position: Int) {
-        holder.bind(cryptoList[position])
+        holder.bind(cryptoList[position], clickListener)
     }
 
     override fun getItemCount():Int{
