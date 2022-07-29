@@ -6,13 +6,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface Api {
     @GET("/v2/assets")
     suspend fun getAllCryptos(): Response<Crypto>
 
     @GET("/assets/{id}")
-    suspend fun getDetailCrypto():Response<CryptoDetail>
+    suspend fun getDetailCrypto(@Path(value = "id") id:String):Response<CryptoDetail>
 }
 
 class RetrofitClient{
