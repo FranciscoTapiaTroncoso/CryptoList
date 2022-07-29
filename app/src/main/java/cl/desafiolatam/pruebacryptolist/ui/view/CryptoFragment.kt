@@ -32,9 +32,11 @@ class CryptoFragment : Fragment() {
 
     private fun initView() {
         cryptoadapter = CryptoAdapter{
-            cryptoId ->  Toast.makeText(context,
-            "Clicked crypto $cryptoId",
+            cryptoSymbol ->  Toast.makeText(context,
+            "Clicked crypto $cryptoSymbol",
             Toast.LENGTH_SHORT).show()
+
+            viewModel.onCryptoClicked(cryptoSymbol)
         }
         binding.rvCryptoList.adapter = cryptoadapter
         binding.rvCryptoList.layoutManager = GridLayoutManager(context, 1)
@@ -54,5 +56,9 @@ class CryptoFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    fun navigation(){
+//        viewModel.navigateToCrypto.observe()
     }
 }

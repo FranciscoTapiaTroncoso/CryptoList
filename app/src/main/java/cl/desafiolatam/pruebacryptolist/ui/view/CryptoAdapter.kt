@@ -8,7 +8,7 @@ import cl.desafiolatam.pruebacryptolist.databinding.CryptoItemBinding
 import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 import com.squareup.picasso.Picasso
 
-class CryptoAdapter(val clickListener: (cryptoId:String)->Unit): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
+class CryptoAdapter(val clickListener: (cryptoSymbol:String)->Unit): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {
 
     private var cryptoList = mutableListOf<DataItem>()
 
