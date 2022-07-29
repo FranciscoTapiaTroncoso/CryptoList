@@ -8,11 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import cl.desafiolatam.pruebacryptolist.databinding.FragmentListingBinding
+import cl.desafiolatam.pruebacryptolist.databinding.FragmentCryptoBinding
 import cl.desafiolatam.pruebacryptolist.ui.viewModel.CryptoViewModel
 
-class ListingFragment : Fragment() {
-    private var _binding: FragmentListingBinding? = null
+class CryptoFragment : Fragment() {
+    private var _binding: FragmentCryptoBinding? = null
     private val binding get() = _binding!!
     private val viewModel by viewModels<CryptoViewModel>()
     private val TAG = "ListingFragment"
@@ -23,7 +23,7 @@ class ListingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentListingBinding.inflate(inflater,container,false)
+        _binding = FragmentCryptoBinding.inflate(inflater,container,false)
         initView()
         registerObserver()
         return binding.root
