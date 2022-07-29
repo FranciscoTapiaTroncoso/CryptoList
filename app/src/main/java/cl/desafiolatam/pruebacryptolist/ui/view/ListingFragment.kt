@@ -41,7 +41,7 @@ class ListingFragment : Fragment() {
             Log.d(TAG, "registerObserver: ${it}")
             //Actualizar lista con objeto no nulo
             it?.let{
-                cryptoadapter.update(it.data)
+                cryptoadapter.update(it)
             }
         }
     }

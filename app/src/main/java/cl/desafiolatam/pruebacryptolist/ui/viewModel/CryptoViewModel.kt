@@ -1,24 +1,28 @@
 package cl.desafiolatam.pruebacryptolist.ui.viewModel
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cl.desafiolatam.pruebacryptolist.model.Repository
-import cl.desafiolatam.pruebacryptolist.model.data.Crypto
+import cl.desafiolatam.pruebacryptolist.model.data.DataItem
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+
 
 class CryptoViewModel: ViewModel() {
     private val repository = Repository()
 
-    private val dataItemList = MutableLiveData<Crypto>()
-    fun cryptoList(): LiveData<Crypto> = dataItemList
+    fun cryptoList(): LiveData<List<DataItem>> = repository.cryptoList
 
     init{
         getCryptos()
     }
 
     fun getCryptos() = viewModelScope.launch{
-        dataItemList.value = repository.getCryptos()
+        withContext(Dispatchers.IO){
+            repository.getCryptos()
+        }
+
     }
 }
