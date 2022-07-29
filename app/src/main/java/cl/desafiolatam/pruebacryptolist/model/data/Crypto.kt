@@ -1,6 +1,8 @@
-package cl.desafiolatam.pruebacryptolist.model.crypto
+package cl.desafiolatam.pruebacryptolist.model.data
 
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class Crypto(
@@ -13,7 +15,10 @@ data class Crypto(
 
 )
 
+@Entity (tableName = "dataitem")
 data class DataItem(
+    @field:SerializedName("id")
+    @PrimaryKey val id: String,
 
     @field:SerializedName("symbol")
     val symbol: String,
@@ -28,7 +33,7 @@ data class DataItem(
     val priceUsd: String,
 
     @field:SerializedName("vwap24Hr")
-    val vwap24Hr: String,
+    val vwap24Hr: String?,
 
     @field:SerializedName("changePercent24Hr")
     val changePercent24Hr: String,
@@ -37,16 +42,13 @@ data class DataItem(
     val name: String,
 
     @field:SerializedName("explorer")
-    val explorer: String,
+    val explorer: String?,
 
     @field:SerializedName("rank")
     val rank: String,
 
-    @field:SerializedName("id")
-    val id: String,
-
     @field:SerializedName("maxSupply")
-    val maxSupply: String,
+    val maxSupply: String?,
 
     @field:SerializedName("supply")
     val supply: String

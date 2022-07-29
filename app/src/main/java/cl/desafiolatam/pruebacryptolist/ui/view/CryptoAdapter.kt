@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import cl.desafiolatam.pruebacryptolist.databinding.CryptoItemBinding
-import cl.desafiolatam.pruebacryptolist.model.crypto.Crypto
-import cl.desafiolatam.pruebacryptolist.model.crypto.DataItem
+import cl.desafiolatam.pruebacryptolist.model.data.DataItem
 import com.squareup.picasso.Picasso
 
 class CryptoAdapter(): RecyclerView.Adapter<CryptoAdapter.CryptoHolder>() {

@@ -1,8 +1,7 @@
 package cl.desafiolatam.pruebacryptolist.model
 
 import android.util.Log
-import cl.desafiolatam.pruebacryptolist.model.crypto.Crypto
-import cl.desafiolatam.pruebacryptolist.model.crypto.DataItem
+import cl.desafiolatam.pruebacryptolist.model.data.Crypto
 import cl.desafiolatam.pruebacryptolist.model.network.RetrofitClient
 
 class Repository {

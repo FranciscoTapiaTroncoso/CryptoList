@@ -1,6 +1,6 @@
 package cl.desafiolatam.pruebacryptolist.model.network
 
-import cl.desafiolatam.pruebacryptolist.model.crypto.Crypto
+import cl.desafiolatam.pruebacryptolist.model.data.Crypto
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
