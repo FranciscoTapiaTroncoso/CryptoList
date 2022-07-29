@@ -11,7 +11,7 @@ import cl.desafiolatam.pruebacryptolist.model.data.DataItem
 interface CryptoDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(crypto: List<DataItem>)
+    fun insert(crypto: List<DataItem>)
 
     @Query("SELECT * FROM dataitem")
     fun getAllCryptos(): LiveData<List<DataItem>>

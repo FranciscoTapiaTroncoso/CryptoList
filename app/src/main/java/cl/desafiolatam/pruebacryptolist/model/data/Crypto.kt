@@ -15,7 +15,7 @@ data class Crypto(
 
 )
 
-@Entity (tableName = "dataitem")
+@Entity
 data class DataItem(
     @field:SerializedName("id")
     @PrimaryKey val id: String,
