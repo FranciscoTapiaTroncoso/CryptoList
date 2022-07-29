@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import cl.desafiolatam.pruebacryptolist.model.Repository
-import cl.desafiolatam.pruebacryptolist.model.data.DataItem
+import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

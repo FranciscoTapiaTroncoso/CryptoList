@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import cl.desafiolatam.pruebacryptolist.model.data.DataItem
+import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 
 @Database(entities = [DataItem::class], version = 1)
 abstract class CryptoDatabase: RoomDatabase(){

@@ -1,4 +1,4 @@
-package cl.desafiolatam.pruebacryptolist.model.data
+package cl.desafiolatam.pruebacryptolist.model.data.crypto
 
 
 import androidx.room.Entity
@@ -6,14 +6,13 @@ import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 data class Crypto(
-
     @field:SerializedName("data")
     val data: List<DataItem>,
 
     @field:SerializedName("timestamp")
     val timestamp: Long
-
 )
+
 
 @Entity
 data class DataItem(

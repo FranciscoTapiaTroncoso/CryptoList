@@ -5,7 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import cl.desafiolatam.pruebacryptolist.model.data.DataItem
+import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 
 @Dao
 interface CryptoDao {
