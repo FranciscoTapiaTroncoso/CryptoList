@@ -1,18 +1,25 @@
 package cl.desafiolatam.pruebacryptolist.ui.view
 
+import android.content.Context
+import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import cl.desafiolatam.pruebacryptolist.databinding.FragmentCryptoBinding
 import cl.desafiolatam.pruebacryptolist.ui.viewModel.CryptoViewModel
+
 
 class CryptoFragment : Fragment() {
     private var _binding: FragmentCryptoBinding? = null
@@ -29,6 +36,7 @@ class CryptoFragment : Fragment() {
         _binding = FragmentCryptoBinding.inflate(inflater,container,false)
         initView()
         registerObserver()
+        onClick()
         return binding.root
     }
 
@@ -70,4 +78,15 @@ class CryptoFragment : Fragment() {
             }
         })
     }
+
+    fun onClick() {
+        val editTextClickListener: View.OnClickListener = View.OnClickListener { v ->
+            if (v.id == binding.etUsuario.getId()) {
+                binding.etUsuario.setCursorVisible(true)
+            }
+        }
+        binding.etUsuario.setOnClickListener(editTextClickListener)
+    }
+
 }
+

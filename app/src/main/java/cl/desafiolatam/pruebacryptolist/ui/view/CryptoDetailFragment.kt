@@ -55,7 +55,6 @@ class CryptoDetailFragment : Fragment() {
             tvMarketCapValue.text = crypto.marketCapUsd
         }
 
-
     }
 
 }
