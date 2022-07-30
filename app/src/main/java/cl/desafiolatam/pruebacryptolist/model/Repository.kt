@@ -15,14 +15,15 @@ class Repository {
         when(response.isSuccessful){
             true -> {
                 if(response.body() != null){
-                   cryptoDao.insert(response.body()!!.data)
+                   cryptoDao.insert(response.body()!!.data.map {
+                       it.copy(timestamp = response.body()!!.timestamp)
+                   })
                 }else{
                     Log.d(TAG, "getCryptos: body is null ")
                 }
             }
             false -> {
                 Log.d(TAG, "getCryptos: error code ${response.code()}")
-
             }
         }
     }

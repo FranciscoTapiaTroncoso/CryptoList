@@ -52,5 +52,8 @@ data class DataItem(
     val maxSupply: String?,
 
     @field:SerializedName("supply")
-    val supply: String
+    val supply: String,
+
+    @field:SerializedName("timestamp")
+    val timestamp: Long
 ): Parcelable

@@ -1,8 +1,11 @@
 package cl.desafiolatam.pruebacryptolist.ui.view
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.KeyEvent
 import android.view.LayoutInflater
@@ -27,6 +30,12 @@ class CryptoFragment : Fragment() {
     private val viewModel by viewModels<CryptoViewModel>()
     private val TAG = "ListingFragment"
     private lateinit var cryptoadapter: CryptoAdapter
+    lateinit var preferences:SharedPreferences
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        preferences = context.getSharedPreferences("preferencia",Context.MODE_PRIVATE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -50,7 +59,28 @@ class CryptoFragment : Fragment() {
         }
         binding.rvCryptoList.adapter = cryptoadapter
         binding.rvCryptoList.layoutManager = GridLayoutManager(context, 1)
+
+        var name = preferences.getString("USERNAME","")
+        Log.d(TAG, "initView: ${name}")
+        binding.etUsuario.setText(name)
+
+        binding.etUsuario.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                preferences.edit().putString("USERNAME",s.toString()).apply()
+                var name = preferences.getString("USERNAME","")
+                Log.d(TAG, "afterinitView: ${name}")
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
     }
+
 
 
     private fun registerObserver() {

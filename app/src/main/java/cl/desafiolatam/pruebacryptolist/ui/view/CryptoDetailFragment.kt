@@ -53,6 +53,7 @@ class CryptoDetailFragment : Fragment() {
             //Falta timestamp
             tvSupplyValue.text = crypto.supply
             tvMarketCapValue.text = crypto.marketCapUsd
+            tvTimeStamp.text = crypto.timestamp.toString()
         }
 
     }
