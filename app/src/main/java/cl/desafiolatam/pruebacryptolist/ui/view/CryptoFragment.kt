@@ -35,7 +35,7 @@ class CryptoFragment : Fragment() {
     private fun initView() {
         cryptoadapter = CryptoAdapter{
             cryptoSymbol ->  Toast.makeText(context,
-            "Clicked crypto $cryptoSymbol",
+            "Clicked crypto ${cryptoSymbol.symbol}",
             Toast.LENGTH_SHORT).show()
             navigation()
             viewModel.onCryptoClicked(cryptoSymbol)

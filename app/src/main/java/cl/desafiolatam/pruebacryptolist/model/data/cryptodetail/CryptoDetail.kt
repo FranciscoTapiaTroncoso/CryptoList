@@ -11,7 +11,9 @@ data class CryptoDetail(
     val data: DataItem,
     @field:SerializedName("timestamp")
     val timestamp: Long
-)
+){
+    fun getTimeStam():Long = timestamp
+}
 
 
 

@@ -21,6 +21,8 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
                 binding.tvCryptoSymbol.text = crypto.symbol
                 Picasso.get()
                     .load(image.getImage(crypto))
+                    .resize(150,150)
+                    .centerCrop()
                     .into(binding.ivCryptoLogo)
                 binding.root.setOnClickListener {
                     clickListener(crypto)

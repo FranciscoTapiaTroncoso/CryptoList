@@ -15,6 +15,7 @@ import cl.desafiolatam.pruebacryptolist.model.data.cryptodetail.CryptoDetail
 import com.squareup.picasso.Picasso
 
 
+
 class CryptoDetailFragment : Fragment() {
     private var _binding: FragmentCryptoDetailBinding? = null
     private val binding get() = _binding!!
@@ -50,6 +51,8 @@ class CryptoDetailFragment : Fragment() {
                 .load(image.getImage(crypto))
                 .into(ivCryptoLogoDetail)
             //Falta timestamp
+            tvSupplyValue.text = crypto.supply
+            tvMarketCapValue.text = crypto.marketCapUsd
         }
 
 
