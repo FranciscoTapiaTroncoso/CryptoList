@@ -38,11 +38,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     tools:text="Basic Attention Token"
-                    app:layout_constraintBottom_toTopOf="@+id/tvUnkownNumberDetail"
-                    app:layout_constraintStart_toStartOf="@+id/tvUnkownNumberDetail" />
+                    app:layout_constraintBottom_toTopOf="@+id/tvTimeStamp"
+                    app:layout_constraintStart_toStartOf="@+id/tvTimeStamp" />
 
                 <TextView
-                    android:id="@+id/tvUnkownNumberDetail"
+                    android:id="@+id/tvTimeStamp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="37dp"

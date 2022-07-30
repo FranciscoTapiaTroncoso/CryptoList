@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import cl.desafiolatam.pruebacryptolist.databinding.FragmentCryptoBinding
 import cl.desafiolatam.pruebacryptolist.ui.viewModel.CryptoViewModel
@@ -35,7 +37,7 @@ class CryptoFragment : Fragment() {
             cryptoSymbol ->  Toast.makeText(context,
             "Clicked crypto $cryptoSymbol",
             Toast.LENGTH_SHORT).show()
-
+            navigation()
             viewModel.onCryptoClicked(cryptoSymbol)
         }
         binding.rvCryptoList.adapter = cryptoadapter
@@ -59,6 +61,13 @@ class CryptoFragment : Fragment() {
     }
 
     fun navigation(){
-//        viewModel.navigateToCrypto.observe()
+        viewModel.navigateToCrypto.observe(viewLifecycleOwner, Observer{crypto ->
+            crypto?.let {
+                val action = CryptoFragmentDirections
+                    .actionCryptoFragmentToCryptoDetailFragment(crypto)
+                this.findNavController().navigate(action)
+                viewModel.onCryptoNavigated()
+            }
+        })
     }
 }

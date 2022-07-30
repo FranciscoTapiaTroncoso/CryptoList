@@ -20,8 +20,8 @@
         android:label="fragment_crypto_detail"
         tools:layout="@layout/fragment_crypto_detail" >
         <argument
-            android:name="symbol"
-            app:argType="string" />
+            android:name="crypto"
+            app:argType="cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem" />
         <action
             android:id="@+id/action_editTaskFragment_to_tasksFragment"
             app:destination="@id/cryptofragment"

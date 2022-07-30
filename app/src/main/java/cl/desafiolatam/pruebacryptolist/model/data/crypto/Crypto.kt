@@ -1,9 +1,11 @@
 package cl.desafiolatam.pruebacryptolist.model.data.crypto
 
 
+import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
 data class Crypto(
     @field:SerializedName("data")
@@ -13,7 +15,7 @@ data class Crypto(
     val timestamp: Long
 )
 
-
+@Parcelize
 @Entity
 data class DataItem(
     @field:SerializedName("id")
@@ -51,4 +53,4 @@ data class DataItem(
 
     @field:SerializedName("supply")
     val supply: String
-)
+): Parcelable

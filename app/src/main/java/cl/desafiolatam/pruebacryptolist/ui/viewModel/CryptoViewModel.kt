@@ -13,8 +13,8 @@ import kotlinx.coroutines.withContext
 
 class CryptoViewModel: ViewModel() {
     private val repository = Repository()
-    private val _navigateToCrypto = MutableLiveData<String?>()
-    val navigateToCrypto:LiveData<String?>get()=_navigateToCrypto
+    private val _navigateToCrypto = MutableLiveData<DataItem?>()
+    val navigateToCrypto:LiveData<DataItem?>get()=_navigateToCrypto
 
     fun cryptoList(): LiveData<List<DataItem>> = repository.cryptoList
 
@@ -28,7 +28,7 @@ class CryptoViewModel: ViewModel() {
         }
     }
 
-    fun onCryptoClicked(cryptoSymbol: String){
+    fun onCryptoClicked(cryptoSymbol: DataItem){
         _navigateToCrypto.value = cryptoSymbol
     }
 
