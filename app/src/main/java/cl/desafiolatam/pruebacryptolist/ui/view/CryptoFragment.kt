@@ -82,7 +82,6 @@ class CryptoFragment : Fragment() {
     }
 
 
-
     private fun registerObserver() {
         viewModel.cryptoList().observe(viewLifecycleOwner){
             Log.d(TAG, "registerObserver: ${it}")

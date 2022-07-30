@@ -13,13 +13,16 @@ import cl.desafiolatam.pruebacryptolist.model.data.crypto.Crypto
 import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 import cl.desafiolatam.pruebacryptolist.model.data.cryptodetail.CryptoDetail
 import com.squareup.picasso.Picasso
-
+import java.util.ArrayList
 
 
 class CryptoDetailFragment : Fragment() {
     private var _binding: FragmentCryptoDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var  crypto: DataItem
+    private var cryptoDetail = ArrayList<CryptoDetail>()
+
+
     private var image = Image()
 
     override fun onCreateView(
@@ -42,7 +45,7 @@ class CryptoDetailFragment : Fragment() {
         _binding = null
     }
 
-    private fun initView(){
+     fun initView(){
         with(binding){
             tvPriceUsdDetail.text = "USD$ " + crypto.priceUsd
             tvCryptoSymbolDetail.text = crypto.symbol
@@ -53,9 +56,21 @@ class CryptoDetailFragment : Fragment() {
             //Falta timestamp
             tvSupplyValue.text = crypto.supply
             tvMarketCapValue.text = crypto.marketCapUsd
-            tvTimeStamp.text = crypto.timestamp.toString()
+
+            tvTimeStamp.text = timeStamFormat(crypto)
         }
 
+    }
+    fun getTimeStamp(crypto: DataItem): Long {
+        var number = crypto.timestamp
+        return  number
+    }
+
+    fun timeStamFormat(crypto:DataItem):String{
+        val number = getTimeStamp(crypto).toString()
+        val format = number.substring(0,2) + ":" + number.substring(2,4) + ":" +
+                number.substring(4,6) + "." + number.substring(6,8)
+        return format
     }
 
 }
