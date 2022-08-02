@@ -13,6 +13,7 @@ import cl.desafiolatam.pruebacryptolist.model.data.crypto.Crypto
 import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 import cl.desafiolatam.pruebacryptolist.model.data.cryptodetail.CryptoDetail
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
 import java.util.ArrayList
 
 
@@ -20,7 +21,6 @@ class CryptoDetailFragment : Fragment() {
     private var _binding: FragmentCryptoDetailBinding? = null
     private val binding get() = _binding!!
     private lateinit var  crypto: DataItem
-    private var cryptoDetail = ArrayList<CryptoDetail>()
 
 
     private var image = Image()
@@ -53,24 +53,19 @@ class CryptoDetailFragment : Fragment() {
             Picasso.get()
                 .load(image.getImage(crypto))
                 .into(ivCryptoLogoDetail)
-            //Falta timestamp
             tvSupplyValue.text = crypto.supply
             tvMarketCapValue.text = crypto.marketCapUsd
 
-            tvTimeStamp.text = timeStamFormat(crypto)
+            tvTimeStamp.text = timeStamFormat(crypto.timestamp)
         }
-
-    }
-    fun getTimeStamp(crypto: DataItem): Long {
-        var number = crypto.timestamp
-        return  number
     }
 
-    fun timeStamFormat(crypto:DataItem):String{
-        val number = getTimeStamp(crypto).toString()
-        val format = number.substring(0,2) + ":" + number.substring(2,4) + ":" +
-                number.substring(4,6) + "." + number.substring(6,8)
-        return format
+    fun timeStamFormat(timeStamp: Long):String{
+        crypto = CryptoDetailFragmentArgs.fromBundle(requireArguments()).crypto
+            val simpleDate = SimpleDateFormat("hh:mm:ss")
+            return simpleDate.format(crypto.timestamp)
     }
+
+
 
 }
