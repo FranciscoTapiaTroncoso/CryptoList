@@ -47,9 +47,11 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
             binding.tvPriceUsd.text = "USD$ " + crypto.priceUsd
             binding.tvCryptoSymbol.text = crypto.symbol
             binding.tvPriceChange.text = crypto.changePercent24Hr
-            Picasso.get().load(image.getImage(crypto))
+            Picasso.get()
+                .load(image.getImage(crypto))
                 .resize(150,150)
-                .centerCrop().into(binding.ivCryptoLogo)
+                .centerCrop()
+                .into(binding.ivCryptoLogo)
             binding.root.setOnClickListener {
                 clickListener(crypto)
             }
@@ -62,9 +64,11 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
             binding.tvPriceUsdNegative.text = "USD$ " + crypto.priceUsd
             binding.tvCryptoSymbolNegative.text = crypto.symbol
             binding.tvPriceChangeNegative.text = crypto.changePercent24Hr
-            Picasso.get().load(image.getImage(crypto))
+            Picasso.get()
+                .load(image.getImage(crypto))
                 .resize(150,150)
-                .centerCrop().into(binding.ivCryptoLogoNegative)
+                .centerCrop()
+                .into(binding.ivCryptoLogoNegative)
             binding.root.setOnClickListener {
                 clickListener(crypto)
             }

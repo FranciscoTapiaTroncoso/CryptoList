@@ -8,60 +8,54 @@
     app:cardElevation="4dp"
     android:layout_margin="5dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/constraintlayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/ivCryptoLogo"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="211dp"
             android:contentDescription="@string/cryptologo"
-            app:layout_constraintEnd_toStartOf="@+id/tvPriceChange"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
+            app:srcCompat="@drawable/ic_launcher_foreground"
+            tools:layout_editor_absoluteX="14dp" />
 
         <TextView
             android:id="@+id/tvCryptoSymbol"
-            android:layout_width="0dp"
+            android:layout_width="131dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="11dp"
             android:gravity="center"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tvPriceUsd"
-            app:layout_constraintStart_toEndOf="@+id/ivCryptoLogo"
-            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="123dp"
+            tools:layout_editor_absoluteY="30dp"
             tools:text="BTC" />
 
-        <TextView
-            android:id="@+id/tvPriceChange"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginBottom="2dp"
-            android:textColor="@color/Shininggreen"
-            tools:text="-0.79"
-            app:layout_constraintBottom_toTopOf="@+id/tvPriceUsd"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ivCryptoLogo"
-            app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvPriceUsd"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="6dp"
-            android:gravity="end"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tvCryptoSymbol"
-            app:layout_constraintTop_toBottomOf="@+id/tvPriceChange"
-            app:layout_constraintVertical_bias="0.819"
-            tools:text="USD $2345098" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvPriceChange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/Shininggreen"
+                android:layout_weight="0.5"
+                tools:layout_editor_absoluteX="349dp"
+                tools:layout_editor_absoluteY="16dp"
+                tools:text="-0.79" />
+
+            <TextView
+                android:id="@+id/tvPriceUsd"
+                android:layout_width="131dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_weight="0.5"
+                tools:layout_editor_absoluteX="265dp"
+                tools:layout_editor_absoluteY="48dp"
+                tools:text="USD $2345098" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>
