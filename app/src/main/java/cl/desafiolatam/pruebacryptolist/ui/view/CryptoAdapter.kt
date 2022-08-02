@@ -90,6 +90,10 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
             POSITIVEVALUE
         }
     }
+
+    private fun format(porcentaje: String):String{
+        return ""
+    }
 }
 
 private object Const{
