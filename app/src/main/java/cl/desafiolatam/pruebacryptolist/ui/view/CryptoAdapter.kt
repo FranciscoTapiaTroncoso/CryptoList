@@ -28,9 +28,6 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
         }
     }
 
-//    override fun onBindViewHolder(holder: CryptoHolder, position: Int) {
-//        holder.bind(cryptoList[position], clickListener)
-//    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         return if(getItemViewType(position) == POSITIVEVALUE){
@@ -81,11 +78,13 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
     }
 
     override fun getItemViewType(position: Int): Int {
-            if(cryptoList[position].changePercent24Hr.contentEquals("-")){
-                return NEGATIVEVALUE
-            } else{
-                return POSITIVEVALUE
-            }
+        val change = cryptoList[position].changePercent24Hr
+        val check = "-" in change
+        return if(check){
+            NEGATIVEVALUE
+        }else{
+            POSITIVEVALUE
+        }
     }
 
 }
