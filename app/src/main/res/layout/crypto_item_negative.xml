@@ -15,10 +15,15 @@
 
         <ImageView
             android:id="@+id/ivCryptoLogoNegative"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="211dp"
+            android:layout_marginBottom="25dp"
             android:contentDescription="@string/cryptologonegative"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/tvPriceChangeNegative"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -26,7 +31,7 @@
 
         <TextView
             android:id="@+id/tvCryptoSymbolNegative"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="11dp"
             android:gravity="center"

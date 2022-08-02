@@ -11,6 +11,7 @@ import cl.desafiolatam.pruebacryptolist.model.data.crypto.DataItem
 import cl.desafiolatam.pruebacryptolist.ui.view.Const.NEGATIVEVALUE
 import cl.desafiolatam.pruebacryptolist.ui.view.Const.POSITIVEVALUE
 import com.squareup.picasso.Picasso
+import kotlinx.parcelize.RawValue
 
 class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -44,9 +45,10 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
     inner class CryptoHolderWithPositivePriceChange(private val binding: CryptoItemBinding)
         :RecyclerView.ViewHolder(binding.root) {
         fun bind(crypto: DataItem, clickListener: (cryptoId:DataItem)->Unit){
+            val formatValue = getformat(crypto.changePercent24Hr)
             binding.tvPriceUsd.text = "USD$ " + crypto.priceUsd
             binding.tvCryptoSymbol.text = crypto.symbol
-            binding.tvPriceChange.text = crypto.changePercent24Hr
+            binding.tvPriceChange.text = formatValue
             Picasso.get()
                 .load(image.getImage(crypto))
                 .resize(150,150)
@@ -61,9 +63,10 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
     inner class CryptoHolderWithNegativePriceChange(private val binding: CryptoItemNegativeBinding)
         :RecyclerView.ViewHolder(binding.root){
         fun bind(crypto: DataItem, clickListener: (cryptoId:DataItem)->Unit){
+            val formatValue = getformat(crypto.changePercent24Hr)
             binding.tvPriceUsdNegative.text = "USD$ " + crypto.priceUsd
             binding.tvCryptoSymbolNegative.text = crypto.symbol
-            binding.tvPriceChangeNegative.text = crypto.changePercent24Hr
+            binding.tvPriceChangeNegative.text = formatValue
             Picasso.get()
                 .load(image.getImage(crypto))
                 .resize(150,150)
@@ -91,8 +94,12 @@ class CryptoAdapter(val clickListener: (crypto:DataItem)->Unit): RecyclerView.Ad
         }
     }
 
-    private fun format(porcentaje: String):String{
-        return ""
+    private fun getformat(rawString: String):String{
+        if(rawString.contains("-")){
+            return "%" + rawString.substring(0,5)
+        }else{
+           return "%" + rawString.substring(0,4)
+        }
     }
 }
 
